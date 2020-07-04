@@ -1,0 +1,20 @@
+@import '../../styles/global';
+
+.Home {
+    height: 100%;
+    display: block;
+    padding: $double-space;
+    box-sizing: border-box;
+
+    @media (min-width: $tablet) {
+        padding: $triple-space
+    }
+
+    .repos-list {
+        padding: 0 $space;
+
+        @media (min-width: $tablet) {
+            padding: 0 80px;
+        }
+    }
+}

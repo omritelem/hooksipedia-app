@@ -1,0 +1,50 @@
+@import '../../styles/global';
+
+.repos-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    box-sizing: border-box;
+
+    .scroll-list {
+        width: 100%;
+        margin-bottom: $sex-space;
+
+        & > * {
+            margin: $double-space 0;
+        }
+    }
+
+    .loader {
+        display: flex;
+        justify-content: center;
+    }
+
+    .no-results,
+    .end-of-results {
+        display: none;
+
+        &.show {
+            display: block;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 20px;
+            color: $white-color;
+            text-align: left;
+            min-width: 250px;
+
+            @media (min-width: $mobile-large) {
+                font-size: 24px;
+            }
+
+            @media (min-width: $tablet) {
+                font-size: 36px;
+            }
+        }
+    }
+}
