@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:3000/repositories';
-// const BASE_URL = 'https://hooksipedia-api.herokuapp.com/repositories';
+const BASE_URL = 'https://hooksipedia-api.herokuapp.com/repositories';
 
 const ReposAxiosInstance = axios.create({
     baseURL: BASE_URL,
