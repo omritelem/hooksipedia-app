@@ -1,11 +1,15 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
+import SettingsIcon from '@material-ui/icons/Settings';
+
 import Loader from '../Loader/Loader';
+import SettingsPanel from "../SettingsPanel/SettingsPanel";
 
 import './ReposHeader.scss';
 
 const LOADER_SIZE = 40;
 
-const ReposHeader = ({ search, setSearch, searchValue, isSearching, setIsSearching }) => {
+const ReposHeader = ({ search, setSearch, searchValue, isSearching, setIsSearching, setLayoutType }) => {
+    const [showSettingsPanel, setShowSettingsPanel] = useState(false);
     const textNotEmpty = searchValue !== '';
     const inputRef = useRef(null);
 
@@ -19,26 +23,41 @@ const ReposHeader = ({ search, setSearch, searchValue, isSearching, setIsSearchi
         inputRef.current.focus();
     }, [setSearchText]);
 
+    const toggleSettingsPanel = useCallback(() => {
+        setShowSettingsPanel(showPanel => !showPanel)
+    }, [setShowSettingsPanel]);
+
     return (
         <header className='headers-list'>
-            <h1>Captain Hooks</h1>
-            <input
-                className="search"
-                type="text"
-                value={search}
-                placeholder="Search For Hooks"
-                onChange={setSearchText}
-                ref={inputRef}
-            />
-            {
-                isSearching && <Loader keyProp={0}
-                                       className="search-loader"
-                                       type="ThreeDots"
-                                       color="#00BFFF"
-                                       height={LOADER_SIZE}
-                                       width={LOADER_SIZE}/>
-            }
-            {(!isSearching && textNotEmpty && <i className="fa fa-times" onClick={setEmptyText}/>)}
+            <div className="title">
+                <SettingsIcon className="settings-icon" onClick={toggleSettingsPanel} />
+                <h1>Captain Hooks</h1>
+            </div>
+            <div className="user-inputs">
+                <SettingsPanel
+                    className="settings-panel"
+                    show={showSettingsPanel}
+                    setLayoutType={setLayoutType}
+                />
+                {!showSettingsPanel && (
+                    <input
+                    className="search"
+                    type="text"
+                    value={search}
+                    placeholder="Search For Hooks"
+                    onChange={setSearchText}
+                    ref={inputRef}
+                />)}
+                {
+                    isSearching && <Loader keyProp={0}
+                                           className="search-loader"
+                                           type="ThreeDots"
+                                           color="#00BFFF"
+                                           height={LOADER_SIZE}
+                                           width={LOADER_SIZE}/>
+                }
+                {(!isSearching && textNotEmpty && <i className="fa fa-times" onClick={setEmptyText}/>)}
+            </div>
         </header>
     );
 };
