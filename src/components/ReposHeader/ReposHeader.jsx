@@ -18,6 +18,9 @@ const ReposHeader = ({ search, setSearch, searchValue, isSearching, setIsSearchi
         setIsSearching(true);
     }, [setSearch, setIsSearching]);
 
+    console.log('textNotEmpty', textNotEmpty);
+    console.log('textNotEmpty', textNotEmpty);
+
     const setEmptyText = useCallback((e) => {
         setSearchText(e);
         inputRef.current.focus();
@@ -56,7 +59,7 @@ const ReposHeader = ({ search, setSearch, searchValue, isSearching, setIsSearchi
                                            height={LOADER_SIZE}
                                            width={LOADER_SIZE}/>
                 }
-                {(!isSearching && textNotEmpty && <i className="fa fa-times" onClick={setEmptyText}/>)}
+                {(!showSettingsPanel && !isSearching && textNotEmpty && <i className="fa fa-times" onClick={setEmptyText}/>)}
             </div>
         </header>
     );
