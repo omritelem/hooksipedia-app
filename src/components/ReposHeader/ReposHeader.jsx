@@ -18,9 +18,6 @@ const ReposHeader = ({ search, setSearch, searchValue, isSearching, setIsSearchi
         setIsSearching(true);
     }, [setSearch, setIsSearching]);
 
-    console.log('textNotEmpty', textNotEmpty);
-    console.log('textNotEmpty', textNotEmpty);
-
     const setEmptyText = useCallback((e) => {
         setSearchText(e);
         inputRef.current.focus();
