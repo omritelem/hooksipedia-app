@@ -1,0 +1,80 @@
+@import './global';
+
+@mixin repo-card-style {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: ($triple-space / 2);
+    border-radius: 8px;
+    background-color: var(--color-card-background);
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.23);
+    transition: transform 0.2s, $background-transition;
+    will-change: transform;
+
+    &:hover {
+        transform: scale(1.03);
+    }
+}
+
+@mixin repo-updated-label {
+    color: var(--color-card-title-text);
+    transition: $color-transition;
+    font-weight: bold;
+    line-height: 14px;
+    margin-right: $double-space;
+}
+
+@mixin repo-name-style {
+    font-weight: bold;
+    box-sizing: border-box;
+    color: var(--color-card-repo-name);
+    transition: $color-transition;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+@mixin repo-owner-style {
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    margin: 0 0 0 auto;
+
+    @media (min-width: $tablet) {
+        flex-direction: row;
+        margin: auto $space 0 auto;
+    }
+
+    .name {
+        color: var(--color-card-repo-owner);
+        transition: $color-transition;
+
+        @media (min-width: $mobile-large) {
+            font-size: 11px;
+        }
+    }
+
+    img {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        margin-bottom: $space;
+        transition: transform .3s;
+        will-change: transform;
+
+        @media (min-width: $mobile-large) {
+            width: 30px;
+            height: 30px;
+        }
+
+        @media (min-width: $tablet) {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 0 0;
+        }
+
+        &:hover {
+            transform: scale(1.3);
+        }
+    }
+}

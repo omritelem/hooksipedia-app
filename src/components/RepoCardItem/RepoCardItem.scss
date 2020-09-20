@@ -1,26 +1,28 @@
 @import '../../styles/global';
 @import '../../styles/shared';
 
-.repo-item {
-    width: 100%;
-    height: 100px;
+.repo-card-item {
+    width: 270px;
+    height: 200px;
 
     @include repo-card-style;
 
-
     @media (min-width: $mobile-large) {
-        height: 110px;
-        padding: 14px;
+        width: 200px;
+        height: 250px;
     }
 
     @media (min-width: $tablet) {
-        height: 120px;
-        padding: $double-space;
+        width: 250px;
+        height: 300px;
     }
 
     a {
+        display: flex;
+        flex-direction: column;
         outline: none;
         text-decoration: none;
+        height: 100%;
 
         .content, .header {
             height: auto;
@@ -32,13 +34,51 @@
             margin-bottom: 5px;
 
             .updated {
-                font-size: 9px;
-                @include repo-updated-label;
+                font-size: 14px;
 
-                @media (min-width: $tablet) {
-                    font-size: 11px;
+                @include repo-updated-label;
+            }
+        }
+
+        .content {
+            display: flex;
+            align-items: center;
+
+            .name {
+                display: flex;
+                flex-direction: column;
+
+                .repo-name {
+                    display: flex;
+                    align-items: center;
+                    height: 100%;
+                    font-size: 14px;
+                    margin: $double-space 0;
+
+                    @include repo-name-style;
+
+                    @media (min-width: $tablet) {
+                        font-size: 24px;
+                    }
+                }
+
+                .description {
+                    font-size: 14px;
+                    color: var(--color-card-repo-desc);
+                    transition: $color-transition;
+                    text-align: left;
+
+                    @media (min-width: $tablet) {
+                        font-size: 16px;
+                    }
                 }
             }
+        }
+
+        .footer {
+            display: flex;
+            align-items: center;
+            margin-top: auto;
 
             & > div {
                 display: flex;
@@ -51,7 +91,7 @@
                 }
 
                 i {
-                    font-size: 11px;
+                    font-size: 13px;
                     margin-right: 6px;
                     box-sizing: border-box;
                     border-radius: 20px;
@@ -71,53 +111,10 @@
                 }
 
                 span {
-                    font-size: 9px;
+                    font-size: 13px;
 
                     @media (min-width: $mobile-large) {
                         font-size: 11px;
-                    }
-
-                    @media (min-width: $tablet) {
-                        font-size: 12px;
-                    }
-                }
-            }
-        }
-
-        .content {
-            display: flex;
-            align-items: center;
-
-            .name {
-                display: flex;
-                flex-direction: column;
-
-                .repo-name {
-                    display: flex;
-                    align-items: center;
-                    height: 100%;
-                    font-size: 12px;
-                    margin: ($space / 2) 0;
-
-                    @include repo-name-style;
-
-                    @media (min-width: $mobile-large) {
-                        font-size: 16px;
-                    }
-
-                    @media (min-width: $tablet) {
-                        font-size: 24px;
-                    }
-                }
-
-                .description {
-                    font-size: 10px;
-                    color: var(--color-card-repo-desc);
-                    transition: $color-transition;
-                    text-align: left;
-
-                    @media (min-width: $mobile-large) {
-                        font-size: 12px;
                     }
 
                     @media (min-width: $tablet) {
@@ -130,10 +127,10 @@
                 @include repo-owner-style;
 
                 .name {
-                    font-size: 9px;
+                    font-size: 13px;
 
                     @media (min-width: $tablet) {
-                        font-size: 13px;
+                        font-size: 12px;
                         margin-right: $double-space;
                     }
                 }

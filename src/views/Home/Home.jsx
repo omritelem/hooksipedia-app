@@ -5,7 +5,7 @@ import { useDebounce } from 'use-debounce';
 import ReposList from '../../components/ReposList/ReposList';
 import ReposHeader from '../../components/ReposHeader/ReposHeader';
 import { fetchRepos, searchRepos } from "../../redux/actions/repos";
-import { PER_PAGE, DEFAULT_MAX_PAGES, DELAY_TIME } from '../../utils/constants';
+import { PER_PAGE, DEFAULT_MAX_PAGES, DELAY_TIME, CARDS_LAYOUT } from '../../utils/constants';
 
 import './Home.scss';
 
@@ -13,6 +13,7 @@ const Home = () => {
     const [search, setSearch] = useState('');
     const [searchValue] = useDebounce(search, DELAY_TIME);
     const [isSearching, setIsSearching] = useState(false);
+    const [layoutType, setLayoutType] = useState(CARDS_LAYOUT);
     const [page, setPage] = useState(1);
     const [showNoResult, setShowNoResult] = useState(false);
     const [fetchingItems, setFetchingItems] = useState(false);
@@ -61,12 +62,14 @@ const Home = () => {
                 searchValue={searchValue}
                 isSearching={isSearching}
                 setIsSearching={setIsSearching}
+                setLayoutType={setLayoutType}
             />
             <ReposList
                 repos={repos}
                 hasMoreRepos={hasMoreRepos}
                 loadMoreRepos={loadMoreRepos}
-                showNoResult={showNoResult} />
+                showNoResult={showNoResult}
+                layoutType={layoutType} />
         </div>
     );
 };

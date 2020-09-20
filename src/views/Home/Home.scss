@@ -10,11 +10,7 @@
         padding: $triple-space
     }
 
-    .repos-list {
+    .headers-list, .repos-list {
         padding: 0 $space;
-
-        @media (min-width: $tablet) {
-            padding: 0 80px;
-        }
     }
 }

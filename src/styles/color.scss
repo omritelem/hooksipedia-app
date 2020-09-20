@@ -1,8 +1,50 @@
-$card-bg-color: #1B1B1B;
-$text-main-color: #838383;
+$page-background-light: #dadada;
+$page-background-dark: #1B1B1B;
+
+$white-color: #ffffff;
+$primary-color: #3d3d3d;
+
+$card-bg-color-light: $white-color;
+$card-bg-color-dark: #434343;
+$card-title-text-light: #838383;
+$card-title-text-dark: #CBCBCB;
+
 $icon-fork-color: #009dff;
-$icon-star-color: #ffff00cc;
-$white-color: rgb(255, 255, 255);
+$icon-star-color: #e2e239cc;
+$icon-star-color-dark: #ffff00cc;
 $white-secondary-color: rgba(255, 255, 255, 0.3);
 $white-third-color: #D6D6D6;
+$white-fourth-color: #F4F5F6;
 $card-cancel-color: #00BFFF;
+
+:root {
+    --color-page-background: #{$page-background-light};
+    --color-primary-text: #{$primary-color};
+    --color-card-background: #{$card-bg-color-light};
+    --color-card-title-text: #{$card-title-text-light};
+    --color-card-repo-name: #{$primary-color};
+    --color-card-repo-desc: #{$primary-color};
+    --color-card-repo-owner: #{$primary-color};
+    --color-card-star-icon: #{$icon-star-color};
+    --color-header-boxes: #{$white-fourth-color};
+}
+
+.dark {
+    --color-page-background: #{$page-background-dark};
+    --color-primary-text: #{$white-color};
+    --color-card-background: #{$card-bg-color-dark};
+    --color-card-title-text: #{$card-title-text-dark};
+    --color-card-repo-name: #{$white-color};
+    --color-card-repo-desc: #{$white-third-color};
+    --color-card-repo-owner: #{$white-secondary-color};
+    --color-card-star-icon: #{$icon-star-color-dark};
+    --color-header-boxes: #{$card-bg-color-dark};
+}
+
+// Transitions
+$background-transition: background-color 0.5s ease;
+$color-transition: color 0.5s ease;
+
+* {
+    transition: $background-transition;
+}

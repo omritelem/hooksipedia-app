@@ -1,16 +1,17 @@
 import React, { useMemo } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import classNames from 'classnames';
+import Grid from '@material-ui/core/Grid';
 
 import RepoItem from '../RepoItem/RepoItem';
+import RepoCardItem from '../RepoCardItem/RepoCardItem';
+import { THRESHOLD, CARDS_LAYOUT } from '../../utils/constants';
 import Loader from '../../components/Loader/Loader';
 
 import './ReposList.scss';
 
-import { THRESHOLD } from '../../utils/constants';
-
-const ReposList = ({ hasMoreRepos, loadMoreRepos, repos, showNoResult }) => {
-
+const ReposList = ({ hasMoreRepos, loadMoreRepos, repos, showNoResult, layoutType }) => {
+    const cardsLayout = layoutType === CARDS_LAYOUT;
     const noResult = useMemo(() => repos && !repos.length, [repos]);
     const loader = <Loader
         key={ 0 }
@@ -21,7 +22,7 @@ const ReposList = ({ hasMoreRepos, loadMoreRepos, repos, showNoResult }) => {
         width={ 100 }/>;
 
     return (
-        <div className='repos-list'>
+        <div className="repos-list">
             <InfiniteScroll
                 className="scroll-list"
                 pageStart={ 0 }
@@ -29,7 +30,19 @@ const ReposList = ({ hasMoreRepos, loadMoreRepos, repos, showNoResult }) => {
                 hasMore={ hasMoreRepos }
                 loader={ loader }
                 threshold={ THRESHOLD }>
-                { repos.map((item, index) => <RepoItem key={ index } { ...item } />) }
+                {
+                    !cardsLayout ? repos.map((item, index) => <RepoItem key={ index } { ...item } />)
+                        : (
+                            <Grid container flex-wrap="wrap" spacing={2} className="scroll-list-container" justify="center">
+                                {
+                                    repos.map((item, index) => (
+                                        <Grid item key={ index }>
+                                            <RepoCardItem key={ index } { ...item } />
+                                        </Grid>
+                                    ))
+                                }
+                            </Grid>
+                )}
             </InfiniteScroll>
             <div className={ classNames("no-results", { show: !hasMoreRepos && noResult }) }>
                 <h1>-------- No Results --------</h1>

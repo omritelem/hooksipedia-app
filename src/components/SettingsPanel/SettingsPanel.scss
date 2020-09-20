@@ -1,0 +1,88 @@
+@import '../../styles/global';
+
+.settings-panel {
+    opacity: 0;
+    height: 0;
+    display: flex;
+    width: 100%;
+    padding: 4px;
+    background-color: var(--color-header-boxes);
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.23);
+    border-radius: 20px;
+    min-height: 0;
+    margin-bottom: 10px;
+    transition: min-height .4s cubic-bezier(0.4, 0, 0.2, 1) 1ms, opacity .35s cubic-bezier(0.4, 0, 0.2, 1) 1ms, background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+    &.expanded {
+        opacity: 1;
+        min-height: 128px;
+        margin-bottom: 20px;
+    }
+
+    & > .MuiGrid-container {
+        & > .label-name {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: .8px;
+            line-height: 20px;
+            text-transform: uppercase;
+            color: var(--color-card-repo-name);
+            transition: $color-transition;
+        }
+    }
+
+    .settings-icons {
+        font-size: 24px;
+
+        @media (min-width: $mobile-large) {
+            font-size: 32px;
+        }
+
+        @media (min-width: $tablet) {
+            font-size: 35px;
+        }
+    }
+
+    .sun-icon {
+        color: var(--color-card-star-icon);
+    }
+
+    .moon-icon {
+        color: $white-color;
+    }
+
+    .cards-container {
+        display: flex;
+        flex-direction: column;
+
+        .card {
+            margin: 2px;
+            width: 100%;
+            height: 10px;
+            background: $card-cancel-color;
+            border-radius: 20px;
+
+            &:nth-child(n + 5) {
+                width: 0;
+                height: 0;
+                margin: 0;
+            }
+        }
+
+        &.cards-layout {
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: center;
+
+            & > .card {
+                width: 27%;
+
+                &:nth-child(n + 5) {
+                    width: 27%;
+                    height: 10px;
+                    margin: 2px;
+                }
+            }
+        }
+    }
+}
