@@ -56,7 +56,7 @@ const ReposHeader = ({ search, setSearch, searchValue, isSearching, setIsSearchi
                                            height={LOADER_SIZE}
                                            width={LOADER_SIZE}/>
                 }
-                {(!isSearching && textNotEmpty && <i className="fa fa-times" onClick={setEmptyText}/>)}
+                {(!showSettingsPanel && !isSearching && textNotEmpty && <i className="fa fa-times" onClick={setEmptyText}/>)}
             </div>
         </header>
     );
