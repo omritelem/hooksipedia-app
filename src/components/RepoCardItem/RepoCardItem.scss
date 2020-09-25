@@ -47,6 +47,7 @@
             .name {
                 display: flex;
                 flex-direction: column;
+                overflow: hidden;
 
                 .repo-name {
                     display: flex;
